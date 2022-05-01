@@ -20,8 +20,10 @@ namespace ArticleReviewAPI.Controllers
     public class ArticleController : ODataController
     {
         public IArticleDataSource ArticleDataSource { get; set; }
-        public ArticleController(IArticleDataSource articleDataSource)
+        public IReviewDataSource ReviewDataSource { get; set; }
+        public ArticleController(IReviewDataSource reviewDataSource, IArticleDataSource articleDataSource)
         {
+            ReviewDataSource = reviewDataSource;
             ArticleDataSource = articleDataSource;
         }
         [HttpGet]
@@ -30,7 +32,7 @@ namespace ArticleReviewAPI.Controllers
         public IEnumerable<Article> Get()
         {
             return ArticleDataSource.ListArticles();
-        } 
+        }
         [HttpPost]
         public IActionResult Post([FromBody] Article article)
         {
@@ -47,7 +49,7 @@ namespace ArticleReviewAPI.Controllers
         {
             if (!article.ValidateModel())
                 return BadRequest(false);
-             
+
 
             var result = ArticleDataSource.UpdateArticle(article);
             if (result)
@@ -57,10 +59,18 @@ namespace ArticleReviewAPI.Controllers
         [HttpDelete]
         public IActionResult Delete(int articleID)
         {
+            var dbOject = ArticleDataSource.GetArticleFromDB(articleID);
+            if (dbOject != null)
+            {
+                bool isDeletable = !ReviewDataSource.ListReviews().ToList().Any(x => x.ArticleId == articleID);
+                if (!isDeletable)
+                    return BadRequest(false);
+            }
+
             var result = ArticleDataSource.DeleteArticle(articleID);
             if (result)
                 return Ok(result);
-            return BadRequest(false); 
+            return BadRequest(false);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace ArticleReviewAPI.Test
         {
             get
             {
-                return new ArticleController(articleDataSource);
+                return new ArticleController(reviewDataSource, articleDataSource);
             }
         }
         public ReviewController ReviewController

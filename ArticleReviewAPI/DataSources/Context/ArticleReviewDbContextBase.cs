@@ -26,6 +26,7 @@ namespace ArticleReviewAPI.DataSources.Context
                 .HasOne<Article>()
                 .WithMany()
                 .HasForeignKey(p => p.ArticleId);
+                //.OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
