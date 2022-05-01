@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ArticleReviewAPI</name>
+    </assembly>
+    <members>
+        <member name="T:ArticleReviewAPI.Auth.AddAuthorizationHeaderParameterOperationFilter">
+            <summary>
+            Swagger Filtering
+            </summary>
+        </member>
+        <member name="M:ArticleReviewAPI.Auth.TokenHandler.CreateAccessToken(ArticleReviewAPI.Auth.User)">
+            <summary>
+            Token Generation
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ArticleReviewAPI.Controllers.LoginController.Login(ArticleReviewAPI.Auth.UserLogin)">
+            <summary>
+            Authentication for the api
+            </summary>
+            <param name="userLogin"></param>
+            <returns>Token values</returns>
+        </member>
+        <member name="M:ArticleReviewAPI.Controllers.LoginController.RefreshTokenLogin(System.String)">
+            <summary>
+            refresh the token
+            </summary>
+            <param name="refreshToken"></param>
+            <returns>Token values</returns>
+        </member>
+        <member name="M:ArticleReviewAPI.Models.Article.Clone">
+            <summary>
+            Shallow clone.
+            </summary>
+            <returns>shallow cloned object.</returns>
+        </member>
+        <member name="M:ArticleReviewAPI.Models.Article.DeepClone">
+            <summary>
+            Deep copying.
+            </summary>
+            <returns>Deeply cloned object</returns>
+        </member>
+        <member name="M:ArticleReviewAPI.Models.Article.Overwrite(System.Object)">
+            <summary>
+            Overwrites the given model to current object.
+            </summary>
+            <param name="model">Object that properties copied from.</param>
+        </member>
+        <member name="M:ArticleReviewAPI.Models.Article.Report">
+            <summary>
+            Gets objects non-sensitive data as a string
+            </summary>
+            <returns>Objects properties and its values.</returns>
+        </member>
+        <member name="M:ArticleReviewAPI.Models.Article.ValidateModel">
+            <summary>
+            Checks weather the model is valid or not.
+            </summary>
+            <returns>If model is a valid object, returns true. Otherwise it returns false</returns>
+        </member>
+        <member name="M:ArticleReviewAPI.Models.Review.Clone">
+            <summary>
+            Shallow clone.
+            </summary>
+            <returns>shallow cloned object.</returns>
+        </member>
+        <member name="M:ArticleReviewAPI.Models.Review.DeepClone">
+            <summary>
+            Deep copying.
+            </summary>
+            <returns>Deeply cloned object</returns>
+        </member>
+        <member name="M:ArticleReviewAPI.Models.Review.Overwrite(System.Object)">
+            <summary>
+            Overwrites the given model to current object.
+            </summary>
+            <param name="model">Object that properties copied from.</param>
+        </member>
+        <member name="M:ArticleReviewAPI.Models.Review.Report">
+            <summary>
+            Gets objects non-sensitive data as a string
+            </summary>
+            <returns>Objects properties and its values.</returns>
+        </member>
+        <member name="M:ArticleReviewAPI.Models.Review.ValidateModel">
+            <summary>
+            Checks weather the model is valid or not.
+            </summary>
+            <returns>If model is a valid object, returns true. Otherwise it returns false</returns>
+        </member>
+    </members>
+</doc>

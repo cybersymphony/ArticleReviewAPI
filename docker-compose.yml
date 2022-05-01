@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  articlereviewapi:
+    image: ${DOCKER_REGISTRY-}articlereviewapi
+    container_name: ArticleReviewAPI
+    build:
+      context: .
+      dockerfile: ArticleReviewAPI/Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "7001:80"
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: SQLServerContainer
+    environment:
+      - SA_PASSWORD=P@ssword
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"
+    volumes:
+      - SQLServerVolume:/var/opt/mssql
+volumes:
+  SQLServerVolume:
+    external: false
